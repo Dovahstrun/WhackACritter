@@ -1,22 +1,78 @@
-#include <SFML/Graphics.hpp>
+//Included libraries
+#include <sfml/Graphics.hpp> //Includes graphics
+#include <SFML/Audio.hpp> //Includes audio
+#include <string> //Include strings
+
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-	sf::CircleShape shape(100.f);
-	shape.setFillColor(sf::Color::Green);
+	///-------------------------------------------------
+	///SETUP
+	///-------------------------------------------------
 
-	while (window.isOpen())
+	//Make a variable called gameWindow of type renderWindow
+	sf::RenderWindow gameWindow;
+	gameWindow.create(sf::VideoMode::getDesktopMode(), "Button Masher", sf::Style::Titlebar | sf::Style::Close);
+
+	///Time
+
+	//Create time variable
+	sf::Clock gameClock;
+
+
+	///-------------------------------------------------
+	///Game Loop
+	///-------------------------------------------------
+	while (gameWindow.isOpen())
 	{
-		sf::Event event;
-		while (window.pollEvent(event))
-		{
-			if (event.type == sf::Event::Closed)
-				window.close();
-		}
-		window.clear();
-		window.draw(shape);
-		window.display();
-	}
+		///---------------------------------------------
+		///INPUT
+		///---------------------------------------------
 
+		sf::Event gameEvent;
+		while (gameWindow.pollEvent(gameEvent))
+		{
+			//Process Events
+
+			//Check if the event is the closed event
+			if (gameEvent.type == sf::Event::Closed)
+			{
+				//Close the game window
+				gameWindow.close();
+			}//End Closed event
+		}//End input polling while loop
+
+		///---------------------------------------------
+		///END INPUT
+		///---------------------------------------------
+
+		///---------------------------------------------
+		///UPDATE
+		///---------------------------------------------
+
+		sf::Time frameTime = gameClock.restart();
+
+		///---------------------------------------------
+		///END UPDATE
+		///---------------------------------------------
+
+		///---------------------------------------------
+		///DRAW
+		///---------------------------------------------
+
+		//Clear window to a single colour
+		gameWindow.clear(sf::Color::Black);
+
+		//Draw everything
+
+		//Display window contents to the screen
+		gameWindow.display();
+
+		///---------------------------------------------
+		///END DRAW
+		///---------------------------------------------
+
+	}//End of game while loop
+
+	//Exit point for program
 	return 0;
-}
+}//end of main function
