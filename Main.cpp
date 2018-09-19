@@ -60,7 +60,7 @@ int main()
 		///---------------------------------------------
 
 		//Clear window to a single colour
-		gameWindow.clear(sf::Color::Black);
+		gameWindow.clear(sf::Color::Magenta);
 
 		//Draw everything
 
