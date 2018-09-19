@@ -2,6 +2,8 @@
 #include <sfml/Graphics.hpp> //Includes graphics
 #include <SFML/Audio.hpp> //Includes audio
 #include <string> //Include strings
+#include <ctime> //gives access to randomness funcs
+#include <cstdlib>//gives access to randomness funcs
 
 //Project includes
 #include "Critter.h"
@@ -20,6 +22,11 @@ int main()
 
 	//Create time variable
 	sf::Clock gameClock;
+
+	///Randomness
+
+	//Seed our random number generation
+	srand(time(NULL));
 
 	///Class
 
@@ -40,6 +47,9 @@ int main()
 		while (gameWindow.pollEvent(gameEvent))
 		{
 			//Process Events
+
+			//Process input on Critters
+			myCritter.Input(gameEvent);
 
 			//Check if the event is the closed event
 			if (gameEvent.type == sf::Event::Closed)
