@@ -31,10 +31,13 @@ int main()
 	///Class
 
 	//Create an instance of our critter class
-	Critter myCritter;
-	myCritter.Setup("graphics/panda.png", 10);
-	Critter crocCritter;
-	crocCritter.Setup("graphics/crocodile.png", -2);
+	const int NUM_CRITTERS = 5;
+	Critter critters[NUM_CRITTERS];
+	critters[0].Setup("graphics/panda.png", 10);
+	critters[1].Setup("graphics/crocodile.png", -3);
+	critters[2].Setup("graphics/elephant.png", 13);
+	critters[3].Setup("graphics/rhino.png", 7);
+	critters[4].Setup("graphics/parrot.png", -7);
 
 	///Fonts/text
 	//Score Tracking
@@ -65,8 +68,10 @@ int main()
 			//Process Events
 
 			//Process input on Critters
-			myCritter.Input(gameEvent);
-			crocCritter.Input(gameEvent);
+			for (int i = 0; i < NUM_CRITTERS; ++i)
+			{
+				critters[i].Input(gameEvent);
+			}
 
 			//Check if the event is the closed event
 			if (gameEvent.type == sf::Event::Closed)
@@ -89,10 +94,11 @@ int main()
 		sf::Time frameTime = gameClock.restart();
 
 		//See if there is a pending score
-		score += myCritter.getPendingScore();
-		myCritter.ClearPendingScore();
-		score += crocCritter.getPendingScore();
-		crocCritter.ClearPendingScore();
+		for (int i = 0; i < NUM_CRITTERS; ++i)
+		{
+			score += critters[i].getPendingScore();
+			critters[i].ClearPendingScore();
+		}
 		scoreText.setString("Score: " + std::to_string(score));
 
 		///---------------------------------------------
@@ -109,8 +115,10 @@ int main()
 		gameWindow.clear(sf::Color::Magenta);
 
 		//Draw everything
-		myCritter.Draw(gameWindow);
-		crocCritter.Draw(gameWindow);
+		for (int i = 0; i < NUM_CRITTERS; ++i)
+		{
+			critters[i].Draw(gameWindow);
+		}
 		gameWindow.draw(scoreText);
 
 		//Display window contents to the screen

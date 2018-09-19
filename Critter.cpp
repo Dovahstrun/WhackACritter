@@ -66,9 +66,9 @@ void Critter::ClearPendingScore()
 
 void Critter::Setup(std::string _textureFile, int _pointValue)
 {
-	m_texture.loadFromFile(_textureFile);
+	m_texture.loadFromFile(_textureFile);//Load t
 	m_sprite.setTexture(m_texture);
-	m_sprite.setPosition(rand() % sf::VideoMode::getDesktopMode().width, rand() % sf::VideoMode::getDesktopMode().height);
+	m_sprite.setPosition((rand() % sf::VideoMode::getDesktopMode().width - 2*m_sprite.getGlobalBounds().width) + m_sprite.getGlobalBounds().width, rand() % sf::VideoMode::getDesktopMode().height - m_sprite.getGlobalBounds().height);
 	m_scoreValue = _pointValue;
 
 }
