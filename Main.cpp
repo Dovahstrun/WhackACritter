@@ -33,6 +33,19 @@ int main()
 	//Create an instance of our critter class
 	Critter myCritter;
 
+	///Fonts/text
+	//Score Tracking
+	sf::Font gameFont;
+	gameFont.loadFromFile("fonts/mainFont.ttf");
+	
+	int score = 0;
+	sf::Text scoreText;
+	scoreText.setFont(gameFont);
+	scoreText.setString("Score: " + std::to_string(score));
+	scoreText.setCharacterSize(50);
+	scoreText.setFillColor(sf::Color::White);
+	scoreText.setPosition(50, 50);
+
 
 	///-------------------------------------------------
 	///Game Loop
@@ -71,6 +84,11 @@ int main()
 
 		sf::Time frameTime = gameClock.restart();
 
+		//See if there is a pending score
+		score += myCritter.getPendingScore();
+		myCritter.ClearPendingScore();
+		scoreText.setString("Score: " + std::to_string(score));
+
 		///---------------------------------------------
 		///END UPDATE
 		///---------------------------------------------
@@ -86,6 +104,7 @@ int main()
 
 		//Draw everything
 		myCritter.Draw(gameWindow);
+		gameWindow.draw(scoreText);
 
 		//Display window contents to the screen
 		gameWindow.display();

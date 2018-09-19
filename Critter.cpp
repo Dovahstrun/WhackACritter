@@ -11,6 +11,7 @@ Critter::Critter()
 	, m_alive(true)
 	, m_deathSound()
 	, m_deathBuffer()
+	, m_pendingScore(0)
 {
 	m_texture.loadFromFile("graphics/elephant.png");
 	m_sprite.setTexture(m_texture);
@@ -47,7 +48,20 @@ void Critter::Input(sf::Event _gameEvent)
 				//Play death sound
 				m_deathSound.play();
 
+				//Add to pending score
+				m_pendingScore += 1;
+
 			}
 		}//End if event statement
 	}
+}
+
+int Critter::getPendingScore()
+{
+	return m_pendingScore;
+}
+
+void Critter::ClearPendingScore()
+{
+	m_pendingScore = 0;
 }

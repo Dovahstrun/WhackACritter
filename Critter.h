@@ -22,6 +22,10 @@ public:
 
 	//Process input on the Critter
 	void Input(sf::Event _gameEvent);
+
+	int getPendingScore();
+
+	void ClearPendingScore();
 	///-------------------------------------------------
 	///END BEHAVIOUR
 	///-------------------------------------------------
@@ -37,6 +41,7 @@ private:
 	bool m_alive;
 	sf::Sound m_deathSound;
 	sf::SoundBuffer m_deathBuffer;
+	int m_pendingScore;
 
 	///-------------------------------------------------
 	///END DATA
