@@ -3,6 +3,9 @@
 #include <SFML/Audio.hpp> //Includes audio
 #include <string> //Include strings
 
+//Project includes
+#include "Critter.h"
+
 int main()
 {
 	///-------------------------------------------------
@@ -17,6 +20,11 @@ int main()
 
 	//Create time variable
 	sf::Clock gameClock;
+
+	///Class
+
+	//Create an instance of our critter class
+	Critter myCritter;
 
 
 	///-------------------------------------------------
@@ -45,6 +53,8 @@ int main()
 		///END INPUT
 		///---------------------------------------------
 
+
+
 		///---------------------------------------------
 		///UPDATE
 		///---------------------------------------------
@@ -55,6 +65,8 @@ int main()
 		///END UPDATE
 		///---------------------------------------------
 
+
+
 		///---------------------------------------------
 		///DRAW
 		///---------------------------------------------
@@ -63,6 +75,7 @@ int main()
 		gameWindow.clear(sf::Color::Magenta);
 
 		//Draw everything
+		myCritter.Draw(gameWindow);
 
 		//Display window contents to the screen
 		gameWindow.display();
