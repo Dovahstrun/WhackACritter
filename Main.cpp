@@ -1,5 +1,5 @@
 //Included libraries
-#include <sfml/Graphics.hpp> //Includes graphics
+#include <SFML/Graphics.hpp> //Includes graphics
 #include <SFML/Audio.hpp> //Includes audio
 #include <string> //Include strings
 #include <ctime> //gives access to randomness funcs
